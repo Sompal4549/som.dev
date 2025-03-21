@@ -9,6 +9,7 @@ const Hangman = () => {
   const [mistakes, setMistakes] = useState(0);
   useEffect(() => {
     resetGame();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const chooseRandomWord = () => {
     const index = Math.round(Math.random() * animalsArr.length);

@@ -1,4 +1,5 @@
 "use client";
+import { Image } from "@chakra-ui/react";
 import React from "react";
 import { useState } from "react";
 
@@ -13,7 +14,7 @@ const ActiveImage = () => {
   }
   return (
     <div className={backgroundClassName} onClick={() => setIsActive(false)}>
-      <img
+      <Image
         onClick={(e) => {
           e.stopPropagation();
           setIsActive(true);
