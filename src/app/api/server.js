@@ -1,6 +1,9 @@
-const { createServer } = require("http");
-const { default: next } = require("next");
+// const { createServer } = require("http");
+// const { default: next } = require("next");
+import { createServer } from "http";
+import next from "next";
 import { Server } from "socket.io";
+
 const dev = true;
 const hostname = "localhost";
 const port = 3000;
