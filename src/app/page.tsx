@@ -6,17 +6,27 @@ import MultiFields from  "@/components/Forms/MultiFields"
 import MultiDimensional from "@/components/Lists/MultiDimensional"
 import SculptureGallery from "@/components/Gallery/SculptureGallery"
 import RequestTracker, {App} from "@/components/Forms/RequestTracker"
+import Chat from "@/components/Forms/Chat"
+import { Box } from "@chakra-ui/react";
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
 {/* <CursorPointer/> */}
 <SculptureGallery />
+<Box as="section">
+{/* <iframe src="https://eyes.nasa.gov/apps/solar-system/#/earth?interactPrompt=true&detailPanel=false&logo=false&search=false&shareButton=false&menu=false&collapseSettingsOptions=true&hideFullScreenToggle=true&lighting=natural" allowfullscreen ></iframe> */}
+{/* <Box as="iframe" width="100vw" height="100vh" src="https://eyes.nasa.gov/apps/solar-system/#/earth?interactPrompt=true&detailPanel=false&logo=false&search=false&shareButton=false&menu=false&collapseSettingsOptions=true&hideFullScreenToggle=true&lighting=natural" allowfullscreen={true} ></Box> */}
+{/* <Box as="iframe" src="https://app.spline.design/file/893aa38d-b0e3-47e4-83fa-08155a091a38" 
+ width="100vw" height="100vh"
+></Box> */}
+</Box>
 <RequestTracker/>
 <App/>
 <MultiDimensional/>
+<Chat />
       <SimpleForm />
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-      <MultiFields />
+      {/* <MultiFields /> */}
       <button popoverTarget="my-popover">
         Open popover
       </button>
