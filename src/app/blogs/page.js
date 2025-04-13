@@ -36,10 +36,13 @@ export default async function Page() {
   return (
     <>
       <div>
-        <Blogs blogs={blogs} />
-
+        <Box id="products" className="vercel-products" as="section">
+          <Blogs blogs={blogs} />
+        </Box>
         <hr />
-        <Products products={products} />
+        <Box id="products" className="vercel-products" as="section">
+          <Products products={products} />
+        </Box>
       </div>
     </>
   );

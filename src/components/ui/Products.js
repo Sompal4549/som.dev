@@ -68,7 +68,9 @@ const Products = ({ products }) => {
                                 display="block"
                               >
                                 <Card.Title maxW="100%">
-                                  <Text lineClamp={2}>{product.title}</Text>
+                                  <Text lineClamp={2}>
+                                    {product.title || product.name}
+                                  </Text>
                                 </Card.Title>
                                 <Card.Description lineClamp={3}>
                                   {product.description}
