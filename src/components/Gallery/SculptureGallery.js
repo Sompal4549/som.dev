@@ -9,6 +9,9 @@ export default function SculptureGallery() {
     setShowMore(!showMore);
   }
   function handleClick() {
+    if (index === sculptureList.length) {
+      setIndex(0);
+    }
     setIndex(index + 1);
   }
   let sculpture = sculptureList[index];

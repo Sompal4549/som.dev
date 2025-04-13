@@ -18,20 +18,22 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
-const Navbar = () => {
+const Navbar = ({ navData }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   return (
     <Flex
       as="nav"
-      p={{ base: "30px 20px", md: "30px 50px" }}
+      p={{ base: "30px 0px", md: "30px 0px" }}
       alignItems="center"
       justifyContent="space-between"
+      width="100%"
     >
-      <Box w="30%">
-        <Link href="/movies">MovieDB clone</Link>
+      <Box alignSelf="flex-start">
+        <Link href={navData[0].url}>{navData[0].title}</Link>
       </Box>
       <Button
+        alignSelf="flex-end"
         ref={btnRef}
         colorScheme="teal"
         onClick={onOpen}
@@ -43,9 +45,22 @@ const Navbar = () => {
         as="ul"
         listStyleType="none"
         display={{ base: "none", md: "flex" }}
-        w="70%"
         justifyContent="flex-end"
+        alignSelf="flex-end"
       >
+        {navData.map((nav, index) => {
+          if (index == 0) return null;
+          else {
+            return (
+              <Box as="li" px="20px" key={index}>
+                <Link href={nav.url}>{nav.title}</Link>
+              </Box>
+            );
+          }
+        })}
+        {/* <Box as="li" px="20px">
+          <Link href="/blogs">Blogs</Link>
+        </Box>
         <Box as="li" px="20px">
           <Link href="/movies/now_playing">Now Playing</Link>
         </Box>
@@ -57,7 +72,7 @@ const Navbar = () => {
         </Box>
         <Box as="li" px="20px">
           <Link href="/movies/upcoming">Upcoming</Link>
-        </Box>
+        </Box> */}
       </Box>
       <Show below="md">
         <Drawer
@@ -85,7 +100,17 @@ const Navbar = () => {
                 flexDir="column"
                 justifyContent="flex-end"
               >
-                <Box as="li" p="10px 20px">
+                {navData.map((nav, index) => {
+                  if (index == 0) return null;
+                  else {
+                    return (
+                      <Box as="li" p="10px 20px" key={index}>
+                        <Link href={nav.url}>{nav.title}</Link>
+                      </Box>
+                    );
+                  }
+                })}
+                {/* <Box as="li" p="10px 20px">
                   <Link href="/movies/now_playing">Now Playing</Link>
                 </Box>
                 <Box as="li" p="10px 20px">
@@ -96,7 +121,7 @@ const Navbar = () => {
                 </Box>
                 <Box as="li" p="10px 20px">
                   <Link href="/movies/upcoming">Upcoming</Link>
-                </Box>
+                </Box> */}
               </List>
             </DrawerBody>
           </DrawerContent>

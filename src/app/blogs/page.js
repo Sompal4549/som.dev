@@ -1,6 +1,23 @@
+import {
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  Card,
+  For,
+  HStack,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 import { nanoid } from "nanoid";
 import Link from "next/link";
+import Blogs from "@/components/ui/Blogs";
+import Products from "@/components/ui/Products";
 
+/**
+ *
+ * @returns
+ */
 export default async function Page() {
   // Since this page is dynamic, it will run through a Vercel Function
   const dynamic = await fetch("https://api.vercel.app/products", {
@@ -14,26 +31,15 @@ export default async function Page() {
       revalidate: 3600, // 1 hour
     },
   });
-  const blog = await stat.json();
+  const blogs = await stat.json();
   // console.log(blog, "sgjjioj");
   return (
     <>
       <div>
-        {blog?.map((bl, index) => {
-          return (
-            <p key={nanoid()}>
-              <Link href={`blogs/${bl.id}`}>{bl.title}</Link>
-            </p>
-          );
-        })}
+        <Blogs blogs={blogs} />
+
         <hr />
-        {products?.map((bl, index) => {
-          return (
-            <p key={nanoid()}>
-              {bl.name}, {bl.category}
-            </p>
-          );
-        })}
+        <Products products={products} />
       </div>
     </>
   );

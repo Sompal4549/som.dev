@@ -7,11 +7,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   const navData = [
     { title: "Home", url: "/" },
-    { title: "MovieDB", url: "/movies" },
-    { title: "Now Playing", url: "/movies/now_playing" },
-    { title: "Popular", url: "/movies/popular" },
-    { title: "Upcoming", url: "/movies/upcoming" },
-    { title: "Top Rated", url: "/movies/top_rated" },
+    { title: "Blogs", url: "/blogs" },
   ];
   return (
     <main style={{ maxWidth: 1250, width: "100%", margin: "0 auto" }}>
