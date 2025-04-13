@@ -1,3 +1,6 @@
+"use client";
+// imports
+import { useCartContext } from "../Cart/CartStore";
 import {
   Accordion,
   Avatar,
@@ -11,14 +14,26 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 
 import { nanoid } from "nanoid";
 import Link from "next/link";
 
+/**
+ *
+ * @param {*} param0
+ * @returns
+ */
 const Products = ({ products }) => {
   const items = Object.groupBy(products, (item) => item.category);
   // console.log(items, "items");
+  const {
+    itemsInCart,
+    setItemsInCart,
+    addItemsToCart,
+    removeItem,
+    getTotalPrize,
+  } = useCartContext();
   return (
     <>
       <Box maxW={1200} mx="auto" width="100%">
@@ -102,7 +117,12 @@ const Products = ({ products }) => {
                             </Card.Body>
                             <Card.Footer gap="2">
                               <Button variant="solid">Buy now</Button>
-                              <Button variant="ghost">Add to cart</Button>
+                              <Button
+                                variant="ghost"
+                                onClick={() => addItemsToCart(product)}
+                              >
+                                Add to cart
+                              </Button>
                             </Card.Footer>
                           </Card.Root>
                         )}

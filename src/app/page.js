@@ -14,6 +14,7 @@ export default function Home() {
   const navData = [
     { title: "Home", url: "/" },
     { title: "Products", url: "/products" },
+    { title: "Cart", url: "/cart" },
     // { title: "MovieDb", url: "/movies" },
     { title: "Blogs", url: "/blogs" },
     { title: "Commentary", url: "/commentary" },
