@@ -75,57 +75,48 @@ const Navbar = ({ navData }) => {
         </Box> */}
       </Box>
       <Show below="md">
-        <Drawer
+        <Drawer.Root
           size={{ base: "full", sm: "xs", md: "small" }}
           isOpen={isOpen}
           placement="right"
           onClose={onClose}
           finalFocusRef={btnRef}
         >
-          <DrawerOverlay />
-          <DrawerContent bg="#2D3748">
-            <DrawerCloseButton />
-            <DrawerHeader>
-              {" "}
-              <Box>
-                <Link href="/movies">MovieDB clone</Link>
-              </Box>
-            </DrawerHeader>
+          <Drawer.Backdrop />
+          <Drawer.Positioner>
+            <Drawer.Content bg="#2D3748">
+              <Drawer.CloseTrigger />
+              <Drawer.Header>
+                {" "}
+                <Box>
+                  <Link href="/movies">MovieDB clone</Link>
+                </Box>
+              </Drawer.Header>
 
-            <DrawerBody>
-              <List
-                listStyleType="none"
-                w="70%"
-                display="flex"
-                flexDir="column"
-                justifyContent="flex-end"
-              >
-                {navData.map((nav, index) => {
-                  if (index == 0) return null;
-                  else {
-                    return (
-                      <Box as="li" p="10px 20px" key={index}>
-                        <Link href={nav.url}>{nav.title}</Link>
-                      </Box>
-                    );
-                  }
-                })}
-                {/* <Box as="li" p="10px 20px">
-                  <Link href="/movies/now_playing">Now Playing</Link>
+              <Drawer.Body>
+                <Box
+                  as="ul"
+                  listStyleType="none"
+                  w="70%"
+                  display="flex"
+                  flexDir="column"
+                  justifyContent="flex-end"
+                >
+                  {navData.map((nav, index) => {
+                    if (index == 0) return null;
+                    else {
+                      return (
+                        <Box as="li" p="10px 20px" key={index}>
+                          <Link href={nav.url}>{nav.title}</Link>
+                        </Box>
+                      );
+                    }
+                  })}
                 </Box>
-                <Box as="li" p="10px 20px">
-                  <Link href="/movies/top_rated">Top Rated</Link>
-                </Box>{" "}
-                <Box as="li" p="10px 20px">
-                  <Link href="/movies/popular">Popular</Link>
-                </Box>
-                <Box as="li" p="10px 20px">
-                  <Link href="/movies/upcoming">Upcoming</Link>
-                </Box> */}
-              </List>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
+              </Drawer.Body>
+            </Drawer.Content>
+          </Drawer.Positioner>
+        </Drawer.Root>
       </Show>
     </Flex>
   );

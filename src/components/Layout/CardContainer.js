@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useState, useEffect, Suspense } from "react";
 // import InfiniteScroll from "react-infinite-scroll-component";
 import useSWR from "swr";
-import ScrollTop from "../icon/ScrollTop";
+import ScrollTop from "@/components/icon/ScrollTop";
 import { nanoid } from "nanoid";
 const CardContainer = ({ products, url, content }) => {
   const [flipped, setFlipped] = useState(-1);
