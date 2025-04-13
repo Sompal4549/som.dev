@@ -8,6 +8,7 @@ export default function RootLayout({ children }) {
   const navData = [
     { title: "Home", url: "/" },
     { title: "Blogs", url: "/blogs" },
+    { title: "Products", url: "/blogs#products" },
   ];
   return (
     <main style={{ maxWidth: 1250, width: "100%", margin: "0 auto" }}>

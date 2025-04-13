@@ -36,7 +36,7 @@ export default async function Page() {
   return (
     <>
       <div>
-        <Box id="products" className="vercel-products" as="section">
+        <Box id="blogs" className="vercel-blogs" as="section">
           <Blogs blogs={blogs} />
         </Box>
         <hr />
