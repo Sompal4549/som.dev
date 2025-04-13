@@ -1,25 +1,19 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
   Flex,
-  List,
-  ListItem,
   Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
   useDisclosure,
+  Portal,
   Show,
+  CloseButton,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
 const Navbar = ({ navData }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [open, setOpen] = useState(false);
   const btnRef = React.useRef();
   return (
     <Flex
@@ -32,15 +26,67 @@ const Navbar = ({ navData }) => {
       <Box alignSelf="flex-start">
         <Link href={navData[0].url}>{navData[0].title}</Link>
       </Box>
-      <Button
-        alignSelf="flex-end"
-        ref={btnRef}
-        colorScheme="teal"
-        onClick={onOpen}
-        display={{ base: "block", md: "none" }}
+      {/* <Show below="md"> */}
+      <Drawer.Root
+        size={{ base: "full", sm: "xs", md: "small" }}
+        placement="right"
+        open={open}
+        onOpenChange={(e) => setOpen(e.open)}
+        finalFocusRef={btnRef}
       >
-        <GiHamburgerMenu />
-      </Button>
+        <Drawer.Trigger>
+          <Button
+            alignSelf="flex-end"
+            // ref={btnRef}
+            colorScheme="teal"
+            // onClick={onOpen}
+            // display={{ base: "block", md: "none" }}
+          >
+            <GiHamburgerMenu />
+          </Button>
+        </Drawer.Trigger>
+        <Portal>
+          <Drawer.Backdrop />
+          <Drawer.Positioner>
+            <Drawer.Content bg="#2D3748">
+              <Drawer.CloseTrigger />
+              <Drawer.Header>
+                {" "}
+                <Box>
+                  <Link href="/movies">MovieDB clone</Link>
+                </Box>
+              </Drawer.Header>
+
+              <Drawer.Body>
+                <Box
+                  as="ul"
+                  listStyleType="none"
+                  w="70%"
+                  display="flex"
+                  flexDir="column"
+                  justifyContent="flex-end"
+                >
+                  {navData.map((nav, index) => {
+                    if (index == 0) return null;
+                    else {
+                      return (
+                        <Box as="li" p="10px 20px" key={index}>
+                          <Link href={nav.url}>{nav.title}</Link>
+                        </Box>
+                      );
+                    }
+                  })}
+                </Box>
+              </Drawer.Body>
+              <Drawer.CloseTrigger asChild>
+                <CloseButton size="sm" />
+              </Drawer.CloseTrigger>
+            </Drawer.Content>
+          </Drawer.Positioner>
+        </Portal>
+      </Drawer.Root>
+      {/* </Show> */}
+
       <Box
         as="ul"
         listStyleType="none"
@@ -74,50 +120,6 @@ const Navbar = ({ navData }) => {
           <Link href="/movies/upcoming">Upcoming</Link>
         </Box> */}
       </Box>
-      <Show below="md">
-        <Drawer.Root
-          size={{ base: "full", sm: "xs", md: "small" }}
-          isOpen={isOpen}
-          placement="right"
-          onClose={onClose}
-          finalFocusRef={btnRef}
-        >
-          <Drawer.Backdrop />
-          <Drawer.Positioner>
-            <Drawer.Content bg="#2D3748">
-              <Drawer.CloseTrigger />
-              <Drawer.Header>
-                {" "}
-                <Box>
-                  <Link href="/movies">MovieDB clone</Link>
-                </Box>
-              </Drawer.Header>
-
-              <Drawer.Body>
-                <Box
-                  as="ul"
-                  listStyleType="none"
-                  w="70%"
-                  display="flex"
-                  flexDir="column"
-                  justifyContent="flex-end"
-                >
-                  {navData.map((nav, index) => {
-                    if (index == 0) return null;
-                    else {
-                      return (
-                        <Box as="li" p="10px 20px" key={index}>
-                          <Link href={nav.url}>{nav.title}</Link>
-                        </Box>
-                      );
-                    }
-                  })}
-                </Box>
-              </Drawer.Body>
-            </Drawer.Content>
-          </Drawer.Positioner>
-        </Drawer.Root>
-      </Show>
     </Flex>
   );
 };

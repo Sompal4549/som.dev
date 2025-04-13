@@ -12,7 +12,11 @@ const HomeUi = () => {
   return (
     <section className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-blue-500 to-purple-600 text-white">
       <Stack direction="column" gap="1rem" textAlign="center">
-        <Heading className="text-5xl font-bold mb-4" fontSize="4rem">
+        <Heading
+          className="text-5xl font-bold mb-4"
+          fontSize="4rem"
+          lineHeight="4rem"
+        >
           Hi, I'm Sompal Kumar
         </Heading>
         <Text fontSize="2rem" className="text-xl mb-6" my="1rem">
