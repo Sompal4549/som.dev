@@ -40,7 +40,7 @@ const Navbar = ({ navData }) => {
             // ref={btnRef}
             colorScheme="teal"
             // onClick={onOpen}
-            // display={{ base: "block", md: "none" }}
+            display={{ base: "block", md: "none" }}
           >
             <GiHamburgerMenu />
           </Button>
