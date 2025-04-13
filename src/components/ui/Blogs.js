@@ -24,8 +24,8 @@ const Blogs = ({ blogs }) => {
   return (
     <Stack gap="4" direction="row" wrap="wrap" marginTop="1rem">
       <For each={blogs}>
-        {(blog) => (
-          <Card.Root width="320px">
+        {(blog, index) => (
+          <Card.Root width="320px" key={index}>
             <Card.Body gap="2">
               {/* <Avatar.Root size="lg" shape="rounded">
                 <Avatar.Image src="https://picsum.photos/200/300" />
@@ -37,6 +37,7 @@ const Blogs = ({ blogs }) => {
               </Text>
               <HStack mt="4">
                 <Badge>{blog.category}</Badge>
+                <Badge>{blog.date}</Badge>
               </HStack>
               <Card.Description>{blog.content}</Card.Description>
             </Card.Body>

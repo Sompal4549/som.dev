@@ -1,6 +1,7 @@
 import {
   Accordion,
   Avatar,
+  Badge,
   Box,
   Button,
   Card,
@@ -83,6 +84,20 @@ const Products = ({ products }) => {
                                 >
                                   &#8377; {product.price}
                                 </Text>
+                                {product?.rating?.count && (
+                                  <Badge>
+                                    {product.rating.count}{" "}
+                                    {product.rating.count < 50
+                                      ? "items left"
+                                      : "left"}
+                                  </Badge>
+                                )}
+                                {product?.stock && (
+                                  <Badge>
+                                    {product.stock}{" "}
+                                    {product.stock < 50 ? "items left" : "left"}
+                                  </Badge>
+                                )}
                               </Link>
                             </Card.Body>
                             <Card.Footer gap="2">
