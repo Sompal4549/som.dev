@@ -81,7 +81,7 @@ const Products = ({ products }) => {
                             <Card.Body gap="2">
                               <Link
                                 href={`./products/${product.id}`}
-                                display="block"
+                                style={{ display: "block" }}
                               >
                                 <Card.Title maxW="100%">
                                   <Text lineClamp={2}>
@@ -116,7 +116,12 @@ const Products = ({ products }) => {
                               </Link>
                             </Card.Body>
                             <Card.Footer gap="2">
-                              <Button variant="solid">Buy now</Button>
+                              <Link
+                                href={`./products/${product.id}`}
+                                style={{ display: "block" }}
+                              >
+                                Buy now
+                              </Link>
                               <Button
                                 variant="ghost"
                                 onClick={() => addItemsToCart(product)}

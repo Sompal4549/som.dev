@@ -34,16 +34,22 @@ const Navbar = ({ navData }) => {
         onOpenChange={(e) => setOpen(e.open)}
         finalFocusRef={btnRef}
       >
-        <Drawer.Trigger>
-          <Button
+        <Drawer.Trigger
+          alignSelf="flex-end"
+          // ref={btnRef}
+          colorScheme="teal"
+          // onClick={onOpen}
+          display={{ base: "block", md: "none" }}
+        >
+          {/* <Button
             alignSelf="flex-end"
             // ref={btnRef}
             colorScheme="teal"
             // onClick={onOpen}
             display={{ base: "block", md: "none" }}
-          >
-            <GiHamburgerMenu />
-          </Button>
+          > */}
+          <GiHamburgerMenu />
+          {/* </Button> */}
         </Drawer.Trigger>
         <Portal>
           <Drawer.Backdrop />
@@ -104,21 +110,6 @@ const Navbar = ({ navData }) => {
             );
           }
         })}
-        {/* <Box as="li" px="20px">
-          <Link href="/blogs">Blogs</Link>
-        </Box>
-        <Box as="li" px="20px">
-          <Link href="/movies/now_playing">Now Playing</Link>
-        </Box>
-        <Box as="li" px="20px">
-          <Link href="/movies/top_rated">Top Rated</Link>
-        </Box>{" "}
-        <Box as="li" px="20px">
-          <Link href="/movies/popular">Popular</Link>
-        </Box>
-        <Box as="li" px="20px">
-          <Link href="/movies/upcoming">Upcoming</Link>
-        </Box> */}
       </Box>
     </Flex>
   );

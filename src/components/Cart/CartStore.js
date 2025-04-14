@@ -23,6 +23,24 @@ const CartStore = ({ children }) => {
     }
   };
 
+  // subtract items
+  const subItemsToCart = (item) => {
+    const existingItem = itemsInCart.find((product) => product.id === item.id);
+
+    if (!existingItem) {
+      // Add new item to cart
+      // setItemsInCart([...itemsInCart, { ...item, itemInCart: 1 }]);
+      return;
+    } else {
+      // Update quantity of existing item
+      const updatedCart = itemsInCart.map((product) =>
+        product.id === item.id
+          ? { ...product, itemInCart: (product.itemInCart -= 1) }
+          : product
+      );
+      setItemsInCart(updatedCart);
+    }
+  };
   // use this method to remove items to the cart
   const removeItem = (id) => {
     const itemId = itemsInCart.find((item) => item.id === id);
@@ -59,6 +77,7 @@ const CartStore = ({ children }) => {
         addItemsToCart,
         removeItem,
         getTotalPrize,
+        subItemsToCart,
       }}
     >
       {children}

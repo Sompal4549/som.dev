@@ -1,3 +1,4 @@
+// imports
 "use client";
 import {
   Badge,
@@ -10,9 +11,21 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { useCartContext } from "../Cart/CartStore";
 
+/**
+ *
+ * @param {Obj} item
+ * @returns
+ */
 const ProductDetail = ({ item }) => {
-  //   console.log(item);
+  const {
+    itemsInCart,
+    setItemsInCart,
+    addItemsToCart,
+    removeItem,
+    getTotalPrize,
+  } = useCartContext();
   return (
     <div>
       <Card.Root flexDirection="row" overflow="hidden" height="80vh">
@@ -56,7 +69,9 @@ const ProductDetail = ({ item }) => {
             </Text>
           </Card.Body>
           <Card.Footer>
-            <Button>Buy {item?.title.slice(0, 20)}...</Button>
+            <Button onClick={() => addItemsToCart(item)}>
+              Add to Cart {item?.title.slice(0, 20)}...
+            </Button>
           </Card.Footer>
         </Box>
       </Card.Root>
