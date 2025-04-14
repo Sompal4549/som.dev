@@ -3,7 +3,7 @@ import WrapLayout from "@/components/ui/WrapLayout";
 import ProductDetail from "@/components/Card/ProductDetail";
 
 const Page = async ({ params }) => {
-  const { product } = params;
+  const { product } = await params;
   const dynamic = await fetch("https://fakestoreapi.com/products", {
     cache: "default",
   });
