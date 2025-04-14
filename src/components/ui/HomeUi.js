@@ -23,9 +23,7 @@ const HomeUi = () => {
           UI Developer & Learner
         </Text>
         <Link
-          fontSize="1.5rem"
-          color="black"
-          textAlign="center"
+          style={{ fontSize: "1.5rem", color: "black", textAlign: "center" }}
           href="https://github.com/Sompal4549"
           className="text-blue-500 px-6 py-3 rounded-full font-semibold transition"
         >

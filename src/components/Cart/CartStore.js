@@ -7,10 +7,20 @@ const CartStore = ({ children }) => {
 
   // use this method to add items to the cart
   const addItemsToCart = (item) => {
-    console.log(item);
-    const items = itemsInCart;
-    setItemsInCart([...items, { ...item }]);
-    console.log(itemsInCart);
+    const existingItem = itemsInCart.find((product) => product.id === item.id);
+
+    if (!existingItem) {
+      // Add new item to cart
+      setItemsInCart([...itemsInCart, { ...item, itemInCart: 1 }]);
+    } else {
+      // Update quantity of existing item
+      const updatedCart = itemsInCart.map((product) =>
+        product.id === item.id
+          ? { ...product, itemInCart: product.itemInCart + 1 }
+          : product
+      );
+      setItemsInCart(updatedCart);
+    }
   };
 
   // use this method to remove items to the cart
@@ -26,7 +36,7 @@ const CartStore = ({ children }) => {
 
   const getTotalPrize = () => {
     const totalPrize = Number(
-      itemsInCart.reduce((pre, cur) => pre + cur.price, 0)
+      itemsInCart.reduce((pre, cur) => pre + cur.price * cur.itemInCart, 0)
     ).toFixed(2);
     console.log(totalPrize);
     return totalPrize;
@@ -34,7 +44,7 @@ const CartStore = ({ children }) => {
   // useEffect to update the localStorage
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(itemsInCart));
-  }, [itemsInCart]);
+  }, [itemsInCart, setItemsInCart]);
 
   // useEffect to update the itemsInCart state
   useEffect(() => {

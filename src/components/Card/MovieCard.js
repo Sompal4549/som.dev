@@ -3,7 +3,7 @@ import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 // import { Image } from "@chakra-ui/next-js";
 import React from "react";
-import { Link } from "@chakra-ui/react";
+import Link from "next/link";
 import LazyImage from "../Images/LazyImage";
 import { nanoid } from "nanoid";
 
