@@ -1,7 +1,15 @@
 "use client";
-import { Box, Heading, Image, Input, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Card,
+  Heading,
+  Image,
+  Input,
+  Stack,
+} from "@chakra-ui/react";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { createApi } from "unsplash-js";
 
 const ImagesUi = ({}) => {
   const [query, setQuery] = useState("");
@@ -35,14 +43,33 @@ const ImagesUi = ({}) => {
         <Input value={query} onChange={handleChange} />
       </form>
       <p className="mt-2">Current Query: {query}</p>
-      {images?.map((image, index) => (
-        <Box key={index}>
-          <Image
-            src={image?.urls?.small || image?.urls?.small_s3}
-            alt={image.alt_description}
-          />
-        </Box>
-      ))}
+      <Stack gap="4" direction="row" wrap="wrap" marginTop="1rem">
+        {images?.map((image, index) => (
+          <Card.Root
+            maxW="sm"
+            overflow="hidden"
+            gap="2"
+            key={index}
+            width="22%"
+          >
+            <Image
+              h={400}
+              src={image?.urls?.small || image?.urls?.small_s3}
+              alt={image.alt_description}
+            />
+            <Card.Footer pt={2}>
+              <Button
+                as={Link}
+                href={`/images/${image.id}`}
+                variant="solid"
+                width="100%"
+              >
+                Add Captions
+              </Button>
+            </Card.Footer>
+          </Card.Root>
+        ))}
+      </Stack>
       {error?.message}
     </Stack>
   );
