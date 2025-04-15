@@ -71,7 +71,7 @@ const CaptionUi = ({ id }) => {
     if (!canvas) return;
 
     new fabric.Image.fromURL(
-      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc3NTB8MHwxfGFsbHx8fHx8fHx8fDE3NDQ2OTA3ODh8&ixlib=rb-4.0.3&q=80&w=400",
+      `${image?.urls?.small}`,
       (img) => {
         img.set({
           left: 0,
@@ -87,18 +87,6 @@ const CaptionUi = ({ id }) => {
       },
       { crossOrigin: "anonymous" }
     );
-    // const imge = new fabric.Image.fromURL(
-    //   "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc3NTB8MHwxfGFsbHx8fHx8fHx8fDE3NDQ2OTA3ODh8&ixlib=rb-4.0.3&q=80&w=400",
-    //   (img) => {
-    //     img.set({
-    //       left: 0,
-    //       top: 0,
-    //       scaleX: 1,
-    //       scaleY: 1,
-    //     });
-    //   }
-    // );
-    // canvas.add(imge);
   };
   const addRectangle = () => {
     if (canvas) {
@@ -163,14 +151,6 @@ const CaptionUi = ({ id }) => {
     }
   };
 
-  // useEffect(() => {
-  //   if (canvas.getObjects()) {
-  //     // canvas.getObjects().forEach((obj, index) => {
-  //     //   console.log(`Layer ${index}:`, obj.type);
-  //     // });
-  //     console.log(canvas.getObjects(), "canvas");
-  //   }
-  // }, []);
   return (
     <Box>
       {" "}
