@@ -11,7 +11,6 @@ const ImagePage = async ({ params }) => {
   const { image } = await params;
   return (
     <div>
-      ImagePage{image}
       <CaptionUi id={image} />
     </div>
   );

@@ -31,7 +31,7 @@ const CaptionUi = ({ id }) => {
   const fetchImage = async () => {
     try {
       const response = await fetch(
-        `https://api.unsplash.com/photos/${id}?client_id=${process.env.NEXT_PUBLIC_ACCESS_KEY}`
+        `https://api.unsplash.com/photos/${id}?client_id=${process.env.NEXT_PRIVATE_ACCESS_KEY}`
       );
       const data = await response.json();
       // console.log(data);

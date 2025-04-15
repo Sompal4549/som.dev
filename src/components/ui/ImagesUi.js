@@ -22,7 +22,7 @@ const ImagesUi = ({}) => {
       const response = await fetch(
         `https://api.unsplash.com/search/photos?query=${
           query || "cat"
-        }&client_id=${process.env.NEXT_PUBLIC_ACCESS_KEY}`
+        }&client_id=${process.env.NEXT_PRIVATE_ACCESS_KEY}`
       );
       const data = await response.json();
       setImages(data.results);
