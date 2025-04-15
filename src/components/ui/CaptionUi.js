@@ -15,6 +15,7 @@ import { useState } from "react";
 import { fabric } from "fabric";
 import { BsSquare } from "react-icons/bs";
 import { BiCircle, BiDownload, BiNotepad } from "react-icons/bi";
+import { useSearchParams } from "next/navigation";
 
 /**
  *
@@ -29,25 +30,38 @@ const CaptionUi = ({ id }) => {
   const [error, setError] = useState(null);
   // fetch function to fetch the image
   const fetchImage = async () => {
-    try {
-      const response = await fetch(
-        `https://api.unsplash.com/photos/${id}?client_id=${process.env.NEXT_PRIVATE_ACCESS_KEY}`
-      );
-      const data = await response.json();
-      // console.log(data);
-      // if (data.ok) {
-      setImage(data);
-      // }
-    } catch (err) {
-      setError(err);
-    }
+    // try {
+    //   const response = await fetch(
+    //     `https://api.unsplash.com/photos/${id}?client_id=${process.env.NEXT_PRIVATE_ACCESS_KEY}`
+    //   );
+    //   const data = await response.json();
+    //   // console.log(data);
+    //   // if (data.ok) {
+    //   setImage(data);
+    //   // }
+    // } catch (err) {
+    //   setError(err);
+    // }
+
+    await fetch(`/api/getbyId?id=${id}`)
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then((data) => setImage(data))
+      .catch((err) => setError(err));
   };
-  useEffect(() => {
-    fetchImage();
-  }, [id]);
+  // useEffect(() => {
+  // }, []);
 
   // canvas
   useEffect(() => {
+    if (id) {
+      // fetching image
+      fetchImage();
+    }
+
+    // setting canvas
     if (canvasRef.current) {
       const initCanvas = new fabric.Canvas(canvasRef.current, {
         width: 500,
