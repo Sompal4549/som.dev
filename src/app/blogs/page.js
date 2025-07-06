@@ -39,10 +39,6 @@ export default async function Page() {
         <Box id="blogs" className="vercel-blogs" as="section">
           <Blogs blogs={blogs} />
         </Box>
-        <hr />
-        <Box id="products" className="vercel-products" as="section">
-          <Products products={products} />
-        </Box>
       </div>
     </>
   );
