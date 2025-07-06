@@ -12,6 +12,7 @@ const CartStore = ({ children }) => {
 toaster.create({
   title: "Added Item to cart",
   description: "Click on Cart to Checkout",
+  type:"success"
 })
     if (!existingItem) {
       // Add new item to cart
@@ -33,6 +34,7 @@ toaster.create({
 toaster.create({
   title: "Deleted Item to cart",
   description: "Click on Cart to Checkout",
+  type:"warning"
 })
     if (!existingItem) {
       // Add new item to cart
@@ -54,6 +56,7 @@ toaster.create({
     toaster.create({
   title: "Removed Item to cart",
   description: "Click on Cart to Checkout",
+      type:"warning"
 })
     if (!itemId) {
       alert("Item not found");
