@@ -1,14 +1,18 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
-
+import { toaster } from "@/components/ui/toaster"
 export const CartContext = createContext();
 const CartStore = ({ children }) => {
   const [itemsInCart, setItemsInCart] = useState([]);
 
   // use this method to add items to the cart
   const addItemsToCart = (item) => {
+    
     const existingItem = itemsInCart.find((product) => product.id === item.id);
-
+toaster.create({
+  title: "Added Item to cart",
+  description: "Click on Cart to Checkout",
+})
     if (!existingItem) {
       // Add new item to cart
       setItemsInCart([...itemsInCart, { ...item, itemInCart: 1 }]);
@@ -26,7 +30,10 @@ const CartStore = ({ children }) => {
   // subtract items
   const subItemsToCart = (item) => {
     const existingItem = itemsInCart.find((product) => product.id === item.id);
-
+toaster.create({
+  title: "Deleted Item to cart",
+  description: "Click on Cart to Checkout",
+})
     if (!existingItem) {
       // Add new item to cart
       // setItemsInCart([...itemsInCart, { ...item, itemInCart: 1 }]);
@@ -44,6 +51,10 @@ const CartStore = ({ children }) => {
   // use this method to remove items to the cart
   const removeItem = (id) => {
     const itemId = itemsInCart.find((item) => item.id === id);
+    toaster.create({
+  title: "Removed Item to cart",
+  description: "Click on Cart to Checkout",
+})
     if (!itemId) {
       alert("Item not found");
     } else {
